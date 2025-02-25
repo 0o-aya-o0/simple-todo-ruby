@@ -1,4 +1,7 @@
-todos = [] # 空の配列を作る。これがないと何も追加できない。
+TODO_FILE = "todos.txt"
+
+# 既存のTo-Doを読み込む
+todos = File.exist?(TODO_FILE) ? File.readlines(TODO_FILE, chomp: true) : []
 
 loop do
     puts "1: 追加, 2: 表示, 3: 削除, 4: 終了" # 文字列
@@ -16,7 +19,8 @@ loop do
         index = gets.to_i - 1 # ユーザーが入力した番号(1,2,3)をインデックス(0,1,2)に変換
         todos.delete_at(index) if index.between?(0, todos.size - 1)
     when 4
-        puts "終了します"
+        File.open(TODO_FILE, "w") { |file| file.puts todos }
+        puts "To-Doリストを保存しました。終了します。"
         break
     else
         puts "無効な入力です"
