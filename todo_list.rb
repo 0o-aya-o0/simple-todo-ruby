@@ -17,7 +17,7 @@ loop do
     when 3
         puts "削除する番号を入力:"
         index = gets.to_i - 1 # ユーザーが入力した番号(1,2,3)をインデックス(0,1,2)に変換
-        todos.delete_at(index) if index.between?(0, todos.size - 1)
+        todos.delete_at(index) if index.between?(0, todos.size - 1) # 範囲内なら削除
     when 4
         File.open(TODO_FILE, "w") { |file| file.puts todos }
         puts "To-Doリストを保存しました。終了します。"
