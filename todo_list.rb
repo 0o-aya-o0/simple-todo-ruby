@@ -4,7 +4,7 @@ TODO_FILE = "todos.txt"
 todos = File.exist?(TODO_FILE) ? File.readlines(TODO_FILE, chomp: true) : []
 
 loop do
-    puts "1: 追加, 2: 表示, 3: 削除, 4: 終了" # 文字列
+    puts "Simple ToDo\n 1: 追加, 2: 表示, 3: 削除, 4: 終了" # 文字列
     choice = gets.to_i # getsでユーザーの入力を受け取り、.to_iで文字列を整数に変換する。変数choiceに入力された数値を代入
 
     case choice # if文よりスッキリ書けるため、case。choiceは変数
